@@ -1,6 +1,6 @@
 """Historical Polymarket price + full order book for one market.
 
-Needs a free DepthFeed key: https://depthfeed.com/price-data
+Needs a free DepthFeed key: https://polymarketpricedata.com/price-data
     export DEPTHFEED_API_KEY=...
 """
 
@@ -12,7 +12,7 @@ from polymarket_price_data import PolymarketPriceData
 def main() -> None:
     key = os.environ.get("DEPTHFEED_API_KEY")
     if not key:
-        raise SystemExit("Set DEPTHFEED_API_KEY (free at https://depthfeed.com/price-data)")
+        raise SystemExit("Set DEPTHFEED_API_KEY (free at https://polymarketpricedata.com/price-data)")
 
     pm = PolymarketPriceData(api_key=key)
 

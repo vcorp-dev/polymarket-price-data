@@ -6,7 +6,7 @@ the public API can't back-fill — Polymarket, Kalshi and Limitless in one API.
 "Price data" = the prediction-market contract price (each outcome quoted 0..1
 = implied probability), NOT the $POLY token.
 
-Get a free key + docs: https://depthfeed.com/price-data
+Get a free key + docs: https://polymarketpricedata.com/price-data
 """
 
 from .client import PolymarketPriceData

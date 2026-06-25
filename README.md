@@ -1,9 +1,9 @@
 # Polymarket Price Data
 
-**The fastest way to get Polymarket price data** — the live `0`–`1` price of every outcome (its implied probability), the full order book behind it, **and the historical price series the public API can't give you** — through one aggregated endpoint. Tiny Python client included; runs against [DepthFeed](https://depthfeed.com/price-data) with no key.
+**The fastest way to get Polymarket price data** — the live `0`–`1` price of every outcome (its implied probability), the full order book behind it, **and the historical price series the public API can't give you** — through one aggregated endpoint. Tiny Python client included; runs against [DepthFeed](https://polymarketpricedata.com/price-data) with no key.
 
-[![DepthFeed — Polymarket price data API](https://img.shields.io/badge/Get%20the%20data-DepthFeed-2563eb)](https://depthfeed.com/price-data)
-[![Order book depth — 566M+ snapshots](https://img.shields.io/badge/Order%20book%20history-566M%2B%20snapshots-16a34a)](https://depthfeed.com/order-book-data)
+[![DepthFeed — Polymarket price data API](https://img.shields.io/badge/Get%20the%20data-DepthFeed-2563eb)](https://polymarketpricedata.com/price-data)
+[![Order book depth — 566M+ snapshots](https://img.shields.io/badge/Order%20book%20history-566M%2B%20snapshots-16a34a)](https://polymarketpricedata.com/order-book-data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 <!-- Polymarket price data · Polymarket price API · Polymarket order book data · Polymarket historical prices · prediction market price data -->
@@ -26,7 +26,7 @@ ov = pm.overview()                  # public endpoint — no key needed
 print(ov)                           # live Polymarket (+ Kalshi + Limitless) prices
 ```
 
-`overview()` hits `https://api.depthfeed.com/v3/overview` — a public endpoint, so the snippet above **runs as-is**. For per-market history and full depth, drop in a [free key](https://depthfeed.com/price-data).
+`overview()` hits `https://api.depthfeed.com/v3/overview` — a public endpoint, so the snippet above **runs as-is**. For per-market history and full depth, drop in a [free key](https://polymarketpricedata.com/price-data).
 
 ---
 
@@ -68,7 +68,7 @@ That's the gap an aggregator fills.
 
 ## The aggregator: one endpoint, all the data
 
-[**DepthFeed**](https://depthfeed.com/price-data) is the aggregator. It has already captured the full Polymarket order book — forward, continuously — into one queryable API, alongside two other venues. The figures below are **measured from the live archive** (June 2026), not estimates:
+[**DepthFeed**](https://polymarketpricedata.com/price-data) is the aggregator. It has already captured the full Polymarket order book — forward, continuously — into one queryable API, alongside two other venues. The figures below are **measured from the live archive** (June 2026), not estimates:
 
 - **566M+ order-book snapshots** across **380,000+ Polymarket markets**, back to **January 2026**.
 - **Both layers on every snapshot**: the outcome's `0`–`1` price **and** the underlying crypto reference price (Binance), joined by epoch-millis timestamp — so a contract's reprice lines up against the spot move tick-for-tick.
@@ -84,14 +84,17 @@ You don't run a collector. You call an endpoint.
 
 The client defaults to the DepthFeed aggregator. **Everything is testable against the live endpoints.**
 
-### No key — public overview
+### No key — try real data instantly
 
 ```python
 from polymarket_price_data import PolymarketPriceData
 pm = PolymarketPriceData()
-pm.overview()        # GET https://api.depthfeed.com/v3/overview  (public)
-pm.health()          # GET .../v3/health                          (public)
+pm.overview()        # GET /v3/overview  (public) — live cross-venue prices
+pm.demo()            # GET /v3/demo      (public) — real order-book depth, BTC 15m, top levels
+pm.health()          # GET /v3/health    (public)
 ```
+
+`demo()` returns **real order-book depth across Polymarket, Kalshi and Limitless** with no signup — a genuine taste of the archive (BTC 15-minute, top levels per side). See [`examples/demo_no_key.py`](./examples/demo_no_key.py).
 
 ### With a free key — markets, history, full depth
 
@@ -108,9 +111,11 @@ for s in snaps:
     print(s["time"], s["price_up"], s["btc_price"])   # 0–1 price + underlying
 ```
 
-Runnable scripts: [`examples/overview_no_key.py`](./examples/overview_no_key.py) · [`examples/market_history.py`](./examples/market_history.py).
+Runnable scripts: [`examples/demo_no_key.py`](./examples/demo_no_key.py) · [`examples/overview_no_key.py`](./examples/overview_no_key.py) · [`examples/market_history.py`](./examples/market_history.py).
 
-→ **[Grab a free API key + full docs at depthfeed.com/price-data](https://depthfeed.com/price-data)**
+Full endpoint reference: **[polymarketpricedata.com/docs](https://polymarketpricedata.com/docs)** · [API overview](https://polymarketpricedata.com/data-api).
+
+→ **[Grab a free API key at polymarketpricedata.com/price-data](https://polymarketpricedata.com/price-data)**
 Plans: **Free $0** · **Pro $29/mo** (all 7 assets, all venues, 30-day history) · **Scale $79/mo** (90-day + Parquet bulk export).
 
 ---
@@ -118,7 +123,7 @@ Plans: **Free $0** · **Pro $29/mo** (all 7 assets, all venues, 30-day history) 
 ## FAQ
 
 **Is there a free Polymarket price API?**
-Polymarket's public endpoints serve *live* data only. For live **plus** history and full depth in one place, DepthFeed has a [free tier](https://depthfeed.com/price-data) — the `overview` endpoint needs no key at all.
+Polymarket's public endpoints serve *live* data only. For live **plus** history and full depth in one place, DepthFeed has a [free tier](https://polymarketpricedata.com/price-data) — the `overview` endpoint needs no key at all.
 
 **How do I get historical Polymarket prices?**
 You can't back-fill order-book depth — it only exists if it was recorded live. Query an archive that already captured it: DepthFeed holds 566M+ snapshots back to January 2026. See [`examples/market_history.py`](./examples/market_history.py).
@@ -136,13 +141,13 @@ DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you 
 
 ## Further reading
 
-- 📈 [Polymarket price data — complete reference](https://depthfeed.com/resources/polymarket-price-data-complete-reference)
-- 📊 [Order-book depth vs last price](https://depthfeed.com/resources/order-book-depth-vs-last-price)
-- 🔌 [Polymarket CLOB WebSocket vs hourly archives](https://depthfeed.com/resources/polymarket-clob-websocket-vs-hourly-archives)
-- 🧪 [How to backtest Polymarket order books](https://depthfeed.com/resources/how-to-backtest-polymarket-order-books)
-- ⚖️ [Polymarket vs Kalshi data](https://depthfeed.com/resources/polymarket-vs-kalshi-data)
+- 📈 [Polymarket price data — complete reference](https://polymarketpricedata.com/resources/polymarket-price-data-complete-reference)
+- 📊 [Order-book depth vs last price](https://polymarketpricedata.com/resources/order-book-depth-vs-last-price)
+- 🔌 [Polymarket CLOB WebSocket vs hourly archives](https://polymarketpricedata.com/resources/polymarket-clob-websocket-vs-hourly-archives)
+- 🧪 [How to backtest Polymarket order books](https://polymarketpricedata.com/resources/how-to-backtest-polymarket-order-books)
+- ⚖️ [Polymarket vs Kalshi data](https://polymarketpricedata.com/resources/polymarket-vs-kalshi-data)
 - 🟧 Kalshi too? → [**kalshi-price-data**](https://github.com/vcorp-dev/kalshi-price-data)
 
 ---
 
-*Independent open-source project. Not affiliated with Polymarket. Archive figures are measured from [DepthFeed](https://depthfeed.com) (a VCorp product). © 2026 VCorp. MIT licensed.*
+*Independent open-source project. Not affiliated with Polymarket. Archive figures are measured from [DepthFeed](https://polymarketpricedata.com) (a VCorp product). © 2026 VCorp. MIT licensed.*
