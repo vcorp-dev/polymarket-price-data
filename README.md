@@ -6,6 +6,8 @@
 [![Order book depth — 566M+ snapshots](https://img.shields.io/badge/Order%20book%20history-566M%2B%20snapshots-16a34a)](https://depthfeed.com/order-book-data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
+<!-- Polymarket price data · Polymarket price API · Polymarket order book data · Polymarket historical prices · prediction market price data -->
+
 > **Which "Polymarket price data" do you mean?** This is **prediction-market price data** — the `0`–`1` price of a *contract/outcome* on Polymarket (e.g. "Will BTC be up at 3pm?"), read off the live order book. It is **not** the `$POLY` exchange token. If you want the market's own probability price, its depth, and its history, you're in the right place.
 
 ---
@@ -71,7 +73,7 @@ That's the gap an aggregator fills.
 - **566M+ order-book snapshots** across **380,000+ Polymarket markets**, back to **January 2026**.
 - **Both layers on every snapshot**: the outcome's `0`–`1` price **and** the underlying crypto reference price (Binance), joined by epoch-millis timestamp — so a contract's reprice lines up against the spot move tick-for-tick.
 - **Full L2 depth** preserved. On BTC up/down 5-minute markets the typical book is a one-cent spread, ~49 levels per side, ~94,000 shares of resting depth.
-- **One endpoint, three venues** — Polymarket **+ Kalshi + Limitless** — the same "BTC up or down, next 15 min" question priced side-by-side. (Kalshi sister repo: [**kalshi-price-data**](https://github.com/fernando-spotbo/kalshi-price-data).)
+- **One endpoint, three venues** — Polymarket **+ Kalshi + Limitless** — the same "BTC up or down, next 15 min" question priced side-by-side. (Kalshi sister repo: [**kalshi-price-data**](https://github.com/vcorp-dev/kalshi-price-data).)
 - **REST + WebSocket**, cursor pagination, server-side downsampling (`?interval=30s…1d`), Parquet bulk export.
 
 You don't run a collector. You call an endpoint.
@@ -125,7 +127,7 @@ You can't back-fill order-book depth — it only exists if it was recorded live.
 Each outcome trades `0`–`1`; the price is the market-implied probability. The best-bid/ask midpoint is the honest live price. For binary markets, `down = 1 − up`.
 
 **Can I get Polymarket and Kalshi prices together?**
-Yes — that's the point of an aggregator. One DepthFeed call returns the same market priced across Polymarket, Kalshi and Limitless. See the [**kalshi-price-data**](https://github.com/fernando-spotbo/kalshi-price-data) repo.
+Yes — that's the point of an aggregator. One DepthFeed call returns the same market priced across Polymarket, Kalshi and Limitless. See the [**kalshi-price-data**](https://github.com/vcorp-dev/kalshi-price-data) repo.
 
 **How do I export Polymarket price data to CSV / Parquet?**
 DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you can write to CSV directly.
@@ -139,7 +141,7 @@ DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you 
 - 🔌 [Polymarket CLOB WebSocket vs hourly archives](https://depthfeed.com/resources/polymarket-clob-websocket-vs-hourly-archives)
 - 🧪 [How to backtest Polymarket order books](https://depthfeed.com/resources/how-to-backtest-polymarket-order-books)
 - ⚖️ [Polymarket vs Kalshi data](https://depthfeed.com/resources/polymarket-vs-kalshi-data)
-- 🟧 Kalshi too? → [**kalshi-price-data**](https://github.com/fernando-spotbo/kalshi-price-data)
+- 🟧 Kalshi too? → [**kalshi-price-data**](https://github.com/vcorp-dev/kalshi-price-data)
 
 ---
 
