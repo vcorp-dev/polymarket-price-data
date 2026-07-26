@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: DepthFeed support
+    url: https://depthfeed.com/contact
+    about: Account, billing, API-key, and product support.
+  - name: Security report
+    url: https://depthfeed.com/contact
+    about: Report vulnerabilities privately.

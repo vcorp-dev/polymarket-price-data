@@ -1,0 +1,28 @@
+name: Client bug
+description: Report a reproducible Python client or example problem.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: "Never include API keys, customer data, or security vulnerabilities."
+  - type: input
+    id: version
+    attributes:
+      label: Python and package version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include a minimal sanitized example and the observed output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this client in research or tooling, please cite it using this metadata."
+title: "DepthFeed Polymarket Price Data Client"
+type: software
+authors:
+  - name: "DepthFeed"
+repository-code: "https://github.com/vcorp-dev/polymarket-price-data"
+url: "https://depthfeed.com/resources/polymarket-api-guide"
+license: MIT
+date-released: 2026-06-25
