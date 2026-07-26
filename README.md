@@ -142,6 +142,7 @@ DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you 
 
 - 🔌 [Official DepthFeed Polymarket API guide](https://depthfeed.com/resources/polymarket-api-guide)
 - 🧪 [Prediction-market trading bot backtesting](https://depthfeed.com/resources/prediction-market-trading-bot-backtesting)
+- 🧪 [Paper trade Polymarket strategies on live displayed books](https://depthfeed.com/polymarket-paper-trading)
 - 📈 [Polymarket price data — complete reference](https://polymarketpricedata.com/resources/polymarket-price-data-complete-reference)
 - 📊 [Order-book depth vs last price](https://polymarketpricedata.com/resources/order-book-depth-vs-last-price)
 - 🔌 [Polymarket CLOB WebSocket vs hourly archives](https://polymarketpricedata.com/resources/polymarket-clob-websocket-vs-hourly-archives)
