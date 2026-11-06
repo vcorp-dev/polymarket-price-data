@@ -115,7 +115,7 @@ Runnable scripts: [`examples/overview_no_key.py`](./examples/overview_no_key.py)
 Full endpoint reference: **[polymarketpricedata.com/docs](https://polymarketpricedata.com/docs)** · [API overview](https://polymarketpricedata.com/data-api).
 
 → **[Grab a free API key at polymarketpricedata.com/price-data](https://polymarketpricedata.com/price-data)**
-Plans: **Free $0** · **Pro $29/mo** (all 7 assets, all venues, 30-day history) · **Scale $79/mo** (90-day + Parquet bulk export).
+See [current DepthFeed plans and limits](https://depthfeed.com/pricing). Check `/v3/whoami` for your account's effective access.
 
 ---
 
@@ -134,7 +134,7 @@ Each outcome trades `0`–`1`; the price is the market-implied probability. The 
 Yes — that's the point of an aggregator. One DepthFeed call returns the same market priced across Polymarket, Kalshi and Limitless. See the [**kalshi-price-data**](https://github.com/vcorp-dev/kalshi-price-data) repo.
 
 **How do I export Polymarket price data to CSV / Parquet?**
-DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you can write to CSV directly.
+For Parquet delivery, see [bulk data options](https://depthfeed.com/bulk-data). REST responses are JSON you can write to CSV.
 
 ---
 
